@@ -701,4 +701,11 @@
 <img src="/Linkeer365TinyMoment2/79f94711/%E5%AE%87%E7%BB%83%E9%93%B6%E9%98%81.jpg" class="">
 ]]></content>
   </entry>
+  <entry>
+    <title>往期博客链接</title>
+    <url>/Linkeer365TinyMoment2/links/</url>
+    <content><![CDATA[<p>原先只是在 _config.yml 里面单开一个 links 字段来写所有链接，但这个字段是属于 blog rolls 的，而 blog rolls 在手机上看不了，必须要在 menu 字段下的才会在手机上显示，现在把它弄成单独的 links 页面并统合到 menu 字段下，这样手机用户就能够查看这些链接了。</p>
+<p>Linkeer365: <a href="https://linkeer365.github.io/">https://linkeer365.github.io/</a><br>Linkeer365ColorfulLife: <a href="http://linkeer365.github.io/Linkeer365ColorfulLife">http://linkeer365.github.io/Linkeer365ColorfulLife</a><br>Linkeer365ColorfulLife2: <a href="http://linkeer365.github.io/Linkeer365ColorfulLife2">http://linkeer365.github.io/Linkeer365ColorfulLife2</a><br>Linkeer365ColorfulLife3: <a href="http://linkeer365.github.io/Linkeer365ColorfulLife3">http://linkeer365.github.io/Linkeer365ColorfulLife3</a><br>Linkeer365TinyMoment: <a href="https://linkeer365.github.io/Linkeer365TinyMoment">https://linkeer365.github.io/Linkeer365TinyMoment</a><br>Linkeer365TinyMoment2: <a href="https://linkeer365.github.io/Linkeer365TinyMoment2">https://linkeer365.github.io/Linkeer365TinyMoment2</a><br>Linkeer365BookReview: <a href="https://linkeer365.github.io/Linkeer365BookReview">https://linkeer365.github.io/Linkeer365BookReview</a></p>
+]]></content>
+  </entry>
 </search>
