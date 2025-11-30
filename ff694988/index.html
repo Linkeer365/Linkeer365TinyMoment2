@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Linkeer365TinyMoment2/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Linkeer365TinyMoment2/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Linkeer365TinyMoment2/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Linkeer365TinyMoment2/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Linkeer365TinyMoment2/css/main.css">
+
+
+
+<link rel="stylesheet" href="//unpkg.com/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//unpkg.com/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/Linkeer365TinyMoment2/","images":"/Linkeer365TinyMoment2/images","scheme":"Gemini","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/Linkeer365TinyMoment2/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="原帖：https:&#x2F;&#x2F;x.com&#x2F;zheshe155&#x2F;status&#x2F;1686699517125763072 @changwei1006我感觉台湾的计算机行业是一点都不卷啊像是索引优化 读懂查询计划 for update和for share以及乐观锁用法都是大陆校招面试必考的八股文 可是台湾的COSCUP年会里面我看很多人都在分享这些看似很基础的技巧包括小红书上经常能看到大陆人自发简历说找不到工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈公司风气">
+<meta property="og:url" content="http://yoursite.com/Linkeer365TinyMoment2/ff694988/index.html">
+<meta property="og:site_name" content="Imaginary Companion">
+<meta property="og:description" content="原帖：https:&#x2F;&#x2F;x.com&#x2F;zheshe155&#x2F;status&#x2F;1686699517125763072 @changwei1006我感觉台湾的计算机行业是一点都不卷啊像是索引优化 读懂查询计划 for update和for share以及乐观锁用法都是大陆校招面试必考的八股文 可是台湾的COSCUP年会里面我看很多人都在分享这些看似很基础的技巧包括小红书上经常能看到大陆人自发简历说找不到工作">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-02T11:24:00.000Z">
+<meta property="article:modified_time" content="2025-11-24T14:57:09.588Z">
+<meta property="article:author" content="Linkeer365">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/Linkeer365TinyMoment2/ff694988/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>谈公司风气 | Imaginary Companion</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/Linkeer365TinyMoment2/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Imaginary Companion</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Linkeer365 细碎瞬间2</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-archives">
+
+    <a href="/Linkeer365TinyMoment2/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/Linkeer365TinyMoment2/links/" rel="section"><i class="fa fa-globe fa-fw"></i>往期博客链接</a>
+
+  </li>
+        <li class="menu-item menu-item-lastwords">
+
+    <a href="/Linkeer365TinyMoment2/lastwords/" rel="section"><i class="fa fa-monument fa-fw"></i>最后的话</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Linkeer365</p>
+  <div class="site-description" itemprop="description">她什么也不记得，一回神发现自己处于人群之中。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/Linkeer365TinyMoment2/archives/">
+        
+          <span class="site-state-item-count">150</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://linkeer365.github.io/" title="https:&#x2F;&#x2F;linkeer365.github.io&#x2F;" rel="noopener" target="_blank">Linkeer365</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://linkeer365.github.io/Linkeer365ColorfulLife" title="http:&#x2F;&#x2F;linkeer365.github.io&#x2F;Linkeer365ColorfulLife" rel="noopener" target="_blank">Linkeer365ColorfulLife</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://linkeer365.github.io/Linkeer365ColorfulLife2" title="http:&#x2F;&#x2F;linkeer365.github.io&#x2F;Linkeer365ColorfulLife2" rel="noopener" target="_blank">Linkeer365ColorfulLife2</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://linkeer365.github.io/Linkeer365ColorfulLife3" title="http:&#x2F;&#x2F;linkeer365.github.io&#x2F;Linkeer365ColorfulLife3" rel="noopener" target="_blank">Linkeer365ColorfulLife3</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://linkeer365.github.io/Linkeer365TinyMoment" title="https:&#x2F;&#x2F;linkeer365.github.io&#x2F;Linkeer365TinyMoment" rel="noopener" target="_blank">Linkeer365TinyMoment</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://linkeer365.github.io/Linkeer365TinyMoment2" title="https:&#x2F;&#x2F;linkeer365.github.io&#x2F;Linkeer365TinyMoment2" rel="noopener" target="_blank">Linkeer365TinyMoment2</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://linkeer365.github.io/Linkeer365BookReview" title="https:&#x2F;&#x2F;linkeer365.github.io&#x2F;Linkeer365BookReview" rel="noopener" target="_blank">Linkeer365BookReview</a>
+        </li>
+    </ul>
+  </div>
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Linkeer365TinyMoment2/ff694988/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Linkeer365TinyMoment2/images/avatar.gif">
+      <meta itemprop="name" content="Linkeer365">
+      <meta itemprop="description" content="她什么也不记得，一回神发现自己处于人群之中。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imaginary Companion">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          谈公司风气
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-02 19:24:00" itemprop="dateCreated datePublished" datetime="2023-08-02T19:24:00+08:00">2023-08-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2025-11-24 22:57:09" itemprop="dateModified" datetime="2025-11-24T22:57:09+08:00">2025-11-24</time>
+      </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>原帖：<br><code>https://x.com/zheshe155/status/1686699517125763072</code></p>
+<p>@changwei1006<br>我感觉台湾的计算机行业是一点都不卷啊<br>像是索引优化 读懂查询计划 for update和for share以及乐观锁用法都是大陆校招面试必考的八股文 可是台湾的COSCUP年会里面我看很多人都在分享这些看似很基础的技巧<br>包括小红书上经常能看到大陆人自发简历说找不到工作 但是台湾人回复说这简历在台湾被人抢着要</p>
+<hr>
+<p>@zheshe155<br>是这样的，现在很多国内大厂的面试题难度真的太离谱了，不应该这么难的。<br>之所以这么难只能说明他们没有信心也没有能力把一个新人培养好，别说培养了，甚至连接触业务熟悉环境的时间都没有，这样怎么能让新人怀念你们呢。</p>
+<p>任何一个组织都是由人与人组成的，都可以看成是人影响人、组织影响人、人影响组织的综合过程，跟薪资、场所是没有太大关系或者只能说是比较次要的关系。</p>
+<p>可能我这里也没有表达得特别清楚，我的意思并不是要去钻营人际，去挖空心思想着怎么把一无是处的自己夸成一朵花，不是这个意思，当然如果照这么理解，也可以说是我想表达的东西的反面，不是一点关系也没有。</p>
+<p>我想说的是，不管你去到哪家单位，进入哪个部门哪个组，退一万步讲你甚至都不一定要上班，存足够的钱旅居在斯堪的纳维亚小岛上写着代码看着灯塔与海鸥，哪怕到了这样的情况下，你都会有时想着跟别人发生一些有意思的互动，当然这些互动不一定是通过语言或肢体所呈现的，完全可以只是一串电波。</p>
+<p>只要是互动就会有影响，只要是影响就会塑造人的外在或内在，就一定会产生益处或害处，这一切是必定发生的（只是不同情况下需要根据程度的轻重去划定一些相应的系数或幂次），如此一来，公司作为人们一生中花费时间最多的去处，就一定要注意其中具体的人带给人的影响，以及作为整体给人带来的影响。</p>
+<p>我一直是坚持技术不重要那一派的，一千人的公司懂硬核技术的不需要超过20人，太多了，你有太多的高手就会让你潜意识觉得天下英雄入吾彀中，就不会很珍惜，慢慢就发展到纵容那些擅长管理学的人轻慢他们；并且有时高手太多他们自己就会产生派系内斗起来，毕竟聪明人往往也是很容易怀疑别人的。</p>
+<p>除开真正的技术人员，其他人只需要学一些sql和测试技法、代码阅读整理技巧，就可以根据不同的业务需要去分别进行一些培训（要注重培训资料的编写与整理），内容主要是一点前后端或嵌入式等，然后定期将疑问发给指导老师并把师生的QA提交上来（最好可以集中收录，可以给未来的培训资料的修订做参考）</p>
+<p>像这样的培训体系，许多人下意识会觉得太理想化了，一来是觉得要花很多成本，二来觉得把人才培训到前后端都非常会做的时候，人才就要另谋高就、花落别家了。<br>从我自己的角度出发，第一点其实是多虑了，很多公司是没有那么多业务更没有那么多技术栈的，整理出来才发现根本没有那么多技术要点非得掌握。</p>
+<p>第二点倒是很常见的，尤其是现在的这些新苗，肉眼可见地勤奋刻苦、聪慧敏锐，技术和业务都学得又快又好，但一旦有了更好的机会，也是非常迅速地递交了辞职信，当然他们后面有些还会回来，有些偶尔打几通电话，但有些也就从此没有音信了，电话也拨不通，感觉外面的世界似乎真的很精彩。</p>
+<p>对于这点我们没有办法的，因为我们自己都不能不承认那是更优的机会更好的平台更高的薪水，并且说实话做个两三年基本上业务也全部摸清了，薪资增长相比外面也非常缓慢，呆在这里确实也挺无聊的，并且还不停地有新人问你一些傻逼问题。<br>这就是为什么没法做大，实在是没有很好的很充分的东西去栓住人心。</p>
+<p>我们不会说“最后证明了留下来的才是赢家”、“最后才发现忠诚赢得了所有”这种话，因为人生的选择本没有什么对错之分，也不能通过跳槽的次数或频率来武断地给人的品行定性。<br>就我个人而言，我更在意你们是如何回忆这家公司，如何回忆在那段时间同你相处过的每个人的，我真的很希望你们能偶尔想起我。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Linkeer365TinyMoment2/21efefda/" rel="prev" title="极乐">
+                  <i class="fa fa-chevron-left"></i> 极乐
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Linkeer365TinyMoment2/f6290659/" rel="next" title="新人编程教学所感">
+                  新人编程教学所感 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linkeer365</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">263k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:59</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//unpkg.com/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="//unpkg.com/hexo-theme-next@8.1.0/source/js/utils.js"></script><script src="//unpkg.com/hexo-theme-next@8.1.0/source/js/motion.js"></script><script src="//unpkg.com/hexo-theme-next@8.1.0/source/js/next-boot.js"></script>
+
+  
+
+<script src="//unpkg.com/hexo-theme-next@8.1.0/source/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>
